@@ -47,9 +47,9 @@
                 </div>
             </li>
             <li>
-                <label for="telephone" class="required"><em>*</em>Order Number?></label>
+                <label for="telephone" class="required"><em>*</em>Order Number</label>
                 <div class="input-box">
-                    <input name="telephone" id="telephone" title="<?php echo Mage::helper('contacts')->__('Telephone') ?>" value="" class="input-text" type="text" />
+                    <input maxlength="10" name="telephone" id="telephone" title="<?php echo Mage::helper('contacts')->__('Telephone') ?>" value="" class="input-text required-entry required-ten-numbers" type="text" />
                 </div>
             </li>
             <li class="wide">
@@ -67,6 +67,16 @@
     </div>
 </form>
 <script type="text/javascript">
+    Validation.add('required-ten-numbers','Your 10-digit order number is required!', function(v,element){
+        pattern= /[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/g
+        if(v.match(pattern)) {
+            return true;
+        }
+            else
+        {
+            return false;
+        }
+    })
 //<![CDATA[
     var contactForm = new VarienForm('contactForm', true);
 //]]>
